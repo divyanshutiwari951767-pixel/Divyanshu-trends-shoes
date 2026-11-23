@@ -1,0 +1,1127 @@
+<!DOCTYPE html>
+<html lang="en" class="scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Divyanshu Trends Shoes Company | Step Into Style & Comfort</title>
+    <!-- Tailwind CSS -->
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Google Fonts: Inter & Plus Jakarta Sans -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&family=Plus+Jakarta+Sans:wght@700;800&display=swap" rel="stylesheet">
+    <!-- Lucide Icons -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        tailwind.config = {
+            theme: {
+                extend: {
+                    fontFamily: {
+                        sans: ['Inter', 'sans-serif'],
+                        display: ['Plus Jakarta Sans', 'sans-serif'],
+                    },
+                    colors: {
+                        brand: {
+                            black: '#111111',
+                            charcoal: '#1E1E1E',
+                            accent: '#E11D48', // Crisp Crimson Retail Accent
+                            amber: '#F59E0B',
+                            surface: '#F8FAFC',
+                        }
+                    }
+                }
+            }
+        }
+    </script>
+</head>
+<body class="bg-slate-50 text-slate-900 font-sans antialiased selection:bg-rose-600 selection:text-white">
+
+    <!-- Top Announcement Bar -->
+    <div class="bg-brand-black text-white text-xs sm:text-sm py-2 px-4 text-center font-medium tracking-wide">
+        <span>FREE EXPRESS DELIVERY ACROSS KANPUR ON ORDERS ABOVE ₹999 • 100% AUTHENTIC FOOTWEAR</span>
+    </div>
+
+    <!-- Main Sticky Storefront Header -->
+    <header class="sticky top-0 z-40 bg-white/95 backdrop-blur-md border-b border-slate-200 shadow-sm">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="flex items-center justify-between h-16 sm:h-20">
+                <!-- Brand Logo -->
+                <a href="#home" onclick="filterCategory('All')" class="flex items-center gap-3 group">
+                    <div class="w-10 h-10 sm:w-11 sm:h-11 bg-brand-black rounded-xl flex items-center justify-center text-white font-display font-extrabold text-xl tracking-tighter group-hover:bg-rose-600 transition-colors shadow-sm">
+                        DT
+                    </div>
+                    <div class="flex flex-col">
+                        <span class="font-display font-extrabold text-base sm:text-xl tracking-tight text-slate-900 leading-none">
+                            DIVYANSHU TRENDS
+                        </span>
+                        <span class="text-[10px] sm:text-xs font-semibold tracking-widest text-rose-600 uppercase mt-0.5">
+                            Shoes Company
+                        </span>
+                    </div>
+                </a>
+
+                <!-- Desktop Navigation -->
+                <nav class="hidden md:flex items-center space-x-1 lg:space-x-2">
+                    <button onclick="navigateCategory('All')" class="nav-link px-3 py-2 rounded-lg text-sm font-semibold text-slate-900 hover:bg-slate-100 transition-colors" data-nav="All">Home</button>
+                    <button onclick="navigateCategory('Men')" class="nav-link px-3 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors" data-nav="Men">Men</button>
+                    <button onclick="navigateCategory('Women')" class="nav-link px-3 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors" data-nav="Women">Women</button>
+                    <button onclick="navigateCategory('Casual & Flip-Flops')" class="nav-link px-3 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors" data-nav="Casual & Flip-Flops">Casual & Flip-Flops</button>
+                    <button onclick="navigateCategory('Formal')" class="nav-link px-3 py-2 rounded-lg text-sm font-semibold text-slate-600 hover:text-slate-900 hover:bg-slate-100 transition-colors" data-nav="Formal">Formal</button>
+                </nav>
+
+                <!-- Right Actions: Search + Cart + Mobile Menu -->
+                <div class="flex items-center gap-2 sm:gap-3">
+                    <!-- Quick Search Input (Desktop) -->
+                    <div class="hidden lg:flex items-center bg-slate-100 rounded-xl px-3 py-2 border border-transparent focus-within:border-slate-300 focus-within:bg-white transition-all">
+                        <i data-lucide="search" class="w-4 h-4 text-slate-400 mr-2"></i>
+                        <input type="text" id="searchInput" oninput="handleSearch(this.value)" placeholder="Search sneakers, formals..." class="bg-transparent text-sm focus:outline-none w-44 text-slate-800 placeholder-slate-400">
+                    </div>
+
+                    <!-- Cart Button -->
+                    <button onclick="toggleCart(true)" class="relative flex items-center gap-2 bg-slate-900 hover:bg-rose-600 text-white px-3.5 py-2.5 rounded-xl font-semibold text-sm transition-all shadow-sm active:scale-95">
+                        <i data-lucide="shopping-bag" class="w-4 h-4 sm:w-5 sm:h-5"></i>
+                        <span class="hidden sm:inline">Cart</span>
+                        <span id="headerCartCount" class="bg-rose-500 text-white text-xs font-bold px-1.5 py-0.5 rounded-full min-w-[20px] text-center">0</span>
+                    </button>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button onclick="toggleMobileMenu()" class="md:hidden p-2.5 rounded-xl text-slate-700 hover:bg-slate-100 focus:outline-none" aria-label="Toggle Menu">
+                        <i data-lucide="menu" class="w-6 h-6"></i>
+                    </button>
+                </div>
+            </div>
+        </div>
+
+        <!-- Mobile Navigation Drawer -->
+        <div id="mobileMenu" class="hidden md:hidden bg-white border-t border-slate-100 px-4 pt-3 pb-5 space-y-2 shadow-lg">
+            <div class="pb-2">
+                <div class="flex items-center bg-slate-100 rounded-xl px-3 py-2.5">
+                    <i data-lucide="search" class="w-4 h-4 text-slate-400 mr-2"></i>
+                    <input type="text" id="mobileSearchInput" oninput="handleSearch(this.value)" placeholder="Search shoes, sandals..." class="bg-transparent text-sm focus:outline-none w-full text-slate-800">
+                </div>
+            </div>
+            <button onclick="navigateCategory('All'); toggleMobileMenu();" class="block w-full text-left px-3 py-2.5 rounded-xl text-base font-semibold text-slate-900 hover:bg-slate-100">Home</button>
+            <button onclick="navigateCategory('Men'); toggleMobileMenu();" class="block w-full text-left px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-100">Men</button>
+            <button onclick="navigateCategory('Women'); toggleMobileMenu();" class="block w-full text-left px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-100">Women</button>
+            <button onclick="navigateCategory('Casual & Flip-Flops'); toggleMobileMenu();" class="block w-full text-left px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-100">Casual & Flip-Flops</button>
+            <button onclick="navigateCategory('Formal'); toggleMobileMenu();" class="block w-full text-left px-3 py-2.5 rounded-xl text-base font-semibold text-slate-700 hover:bg-slate-100">Formal</button>
+        </div>
+    </header>
+
+    <!-- Hero Banner -->
+    <section id="home" class="relative bg-brand-black text-white overflow-hidden">
+        <!-- Decorative Background Pattern -->
+        <div class="absolute inset-0 opacity-20 bg-[radial-gradient(#e11d48_1px,transparent_1px)] [background-size:24px_24px]"></div>
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-20 lg:py-24 relative z-10">
+            <div class="grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
+                <!-- Hero Text -->
+                <div class="lg:col-span-7 space-y-6 text-center lg:text-left">
+                    <div class="inline-flex items-center gap-2 px-3.5 py-1.5 rounded-full bg-white/10 border border-white/15 text-rose-400 text-xs sm:text-sm font-semibold tracking-wide uppercase">
+                        <span class="w-2 h-2 rounded-full bg-rose-500 animate-pulse"></span>
+                        New Season 2026 Collection • Kanpur's Favourite
+                    </div>
+                    <h1 class="font-display font-extrabold text-4xl sm:text-5xl lg:text-6xl tracking-tight leading-[1.1]">
+                        Step Into Unmatched <span class="text-transparent bg-clip-text bg-gradient-to-r from-rose-500 to-amber-400">Style & Comfort.</span>
+                    </h1>
+                    <p class="text-slate-300 text-base sm:text-lg max-w-2xl mx-auto lg:mx-0 leading-relaxed">
+                        Discover handcrafted leather formals, high-performance running sneakers, stylish women's footwear, and ultra-light everyday flip-flops curated by <strong>Divyanshu Trends Shoes Company</strong>.
+                    </p>
+                    <div class="flex flex-col sm:flex-row items-center justify-center lg:justify-start gap-4 pt-2">
+                        <a href="#catalog" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-rose-600 hover:bg-rose-500 text-white font-bold text-base transition-all shadow-lg shadow-rose-600/30 flex items-center justify-center gap-2">
+                            <span>Shop Latest Drops</span>
+                            <i data-lucide="arrow-right" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#store-info" class="w-full sm:w-auto px-8 py-4 rounded-xl bg-white/10 hover:bg-white/20 text-white font-semibold text-base border border-white/15 transition-all flex items-center justify-center gap-2">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-rose-400"></i>
+                            <span>Visit Barra Store</span>
+                        </a>
+                    </div>
+                    <!-- Trust Badges -->
+                    <div class="grid grid-cols-3 gap-4 pt-6 border-t border-white/10 max-w-lg mx-auto lg:mx-0">
+                        <div>
+                            <p class="font-display font-extrabold text-xl sm:text-2xl text-white">500+</p>
+                            <p class="text-xs text-slate-400">Trendy Designs</p>
+                        </div>
+                        <div>
+                            <p class="font-display font-extrabold text-xl sm:text-2xl text-white">7-Day</p>
+                            <p class="text-xs text-slate-400">Easy Size Swap</p>
+                        </div>
+                        <div>
+                            <p class="font-display font-extrabold text-xl sm:text-2xl text-white">4.9 ★</p>
+                            <p class="text-xs text-slate-400">Kanpur Rated</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Hero Featured Shoe Showcase -->
+                <div class="lg:col-span-5 relative">
+                    <div class="relative rounded-3xl overflow-hidden bg-gradient-to-br from-slate-800 to-slate-900 border border-white/10 p-4 sm:p-6 shadow-2xl">
+                        <div class="absolute top-5 left-5 z-10 bg-rose-600 text-white text-xs font-extrabold px-3 py-1.5 rounded-lg uppercase tracking-wider shadow">
+                            Bestseller • 25% OFF
+                        </div>
+                        <img 
+                            src="https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=900&q=80" 
+                            onerror="this.src='https://placehold.co/800x650/1e293b/f8fafc?text=Divyanshu+Trends+Crimson+Runner'"
+                            alt="Featured Crimson Runner Sneaker" 
+                            class="w-full h-72 sm:h-80 object-cover rounded-2xl transform hover:scale-105 transition-transform duration-500"
+                        >
+                        <div class="mt-4 flex items-center justify-between">
+                            <div>
+                                <p class="text-xs text-rose-400 font-semibold uppercase tracking-wider">Men's Performance</p>
+                                <h3 class="font-display font-bold text-lg text-white">DT AeroPulse Crimson Runner</h3>
+                            </div>
+                            <div class="text-right">
+                                <span class="text-xs text-slate-400 line-through block">₹3,299</span>
+                                <span class="font-display font-extrabold text-xl text-amber-400">₹2,499</span>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Value Proposition Strip -->
+    <section class="bg-white border-b border-slate-200">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-6">
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                <div class="flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-rose-50 text-rose-600 flex items-center justify-center shrink-0">
+                        <i data-lucide="truck" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm text-slate-900">Same-Day Kanpur Delivery</h4>
+                        <p class="text-xs text-slate-500">Fast dispatch from our Barra hub</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-amber-50 text-amber-600 flex items-center justify-center shrink-0">
+                        <i data-lucide="shield-check" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm text-slate-900">Genuine Quality Guarantee</h4>
+                        <p class="text-xs text-slate-500">Inspected soles & durable stitching</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-emerald-50 text-emerald-600 flex items-center justify-center shrink-0">
+                        <i data-lucide="refresh-cw" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm text-slate-900">Hassle-Free Size Exchange</h4>
+                        <p class="text-xs text-slate-500">UK 6 to UK 10 instant swaps</p>
+                    </div>
+                </div>
+                <div class="flex items-center gap-3.5">
+                    <div class="w-11 h-11 rounded-xl bg-indigo-50 text-indigo-600 flex items-center justify-center shrink-0">
+                        <i data-lucide="wallet" class="w-5 h-5"></i>
+                    </div>
+                    <div>
+                        <h4 class="font-bold text-sm text-slate-900">Cash on Delivery & UPI</h4>
+                        <p class="text-xs text-slate-500">Pay comfortably at your doorstep</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Main Product Catalog Section -->
+    <main id="catalog" class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+        <!-- Section Header & Category Filter Pills -->
+        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6 mb-10">
+            <div>
+                <span class="text-rose-600 font-bold text-xs uppercase tracking-widest">Curated Footwear</span>
+                <h2 class="font-display font-extrabold text-3xl sm:text-4xl text-slate-900 mt-1">Explore Our Collection</h2>
+                <p class="text-slate-600 text-sm sm:text-base mt-1">Select your UK shoe size and add your favourite pairs to the bag.</p>
+            </div>
+
+            <!-- Sort Dropdown -->
+            <div class="flex items-center gap-3 self-start md:self-auto">
+                <label for="sortSelect" class="text-xs font-semibold text-slate-500 uppercase tracking-wider">Sort By:</label>
+                <select id="sortSelect" onchange="handleSort(this.value)" class="bg-white border border-slate-200 rounded-xl px-4 py-2.5 text-sm font-semibold text-slate-800 focus:outline-none focus:border-slate-900 shadow-sm cursor-pointer">
+                    <option value="featured">Featured Picks</option>
+                    <option value="price-low">Price: Low to High</option>
+                    <option value="price-high">Price: High to Low</option>
+                </select>
+            </div>
+        </div>
+
+        <!-- Category Filter Tabs -->
+        <div class="flex items-center gap-2.5 overflow-x-auto pb-4 mb-8 no-scrollbar" id="categoryFilters">
+            <button onclick="filterCategory('All')" data-cat="All" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-slate-900 text-white shadow-sm whitespace-nowrap transition-all">
+                All Footwear
+            </button>
+            <button onclick="filterCategory('Men')" data-cat="Men" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:border-slate-900 whitespace-nowrap transition-all">
+                Men
+            </button>
+            <button onclick="filterCategory('Women')" data-cat="Women" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:border-slate-900 whitespace-nowrap transition-all">
+                Women
+            </button>
+            <button onclick="filterCategory('Casual & Flip-Flops')" data-cat="Casual & Flip-Flops" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:border-slate-900 whitespace-nowrap transition-all">
+                Casual & Flip-Flops
+            </button>
+            <button onclick="filterCategory('Formal')" data-cat="Formal" class="cat-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:border-slate-900 whitespace-nowrap transition-all">
+                Formal
+            </button>
+        </div>
+
+        <!-- Active Filter Info -->
+        <div class="flex items-center justify-between mb-6 text-sm text-slate-500">
+            <p>Showing <span id="productCount" class="font-bold text-slate-900">0</span> products</p>
+            <button id="resetSearchBtn" onclick="resetFilters()" class="hidden text-rose-600 font-semibold hover:underline">Clear filters</button>
+        </div>
+
+        <!-- Product Grid -->
+        <div id="productGrid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6 sm:gap-7">
+            <!-- Dynamically populated by JavaScript -->
+        </div>
+
+        <!-- Empty State when Search Matches Nothing -->
+        <div id="emptyCatalogState" class="hidden text-center py-16 bg-white rounded-3xl border border-slate-200">
+            <div class="w-16 h-16 bg-slate-100 rounded-full flex items-center justify-center mx-auto mb-4 text-slate-400">
+                <i data-lucide="search-x" class="w-8 h-8"></i>
+            </div>
+            <h3 class="font-display font-bold text-xl text-slate-900">No shoes matched your search</h3>
+            <p class="text-slate-500 text-sm mt-1 max-w-md mx-auto">Try searching for sneakers, leather, loafers, heels, or flip-flops, or browse all categories.</p>
+            <button onclick="resetFilters()" class="mt-5 px-6 py-2.5 bg-slate-900 text-white rounded-xl font-semibold text-sm hover:bg-rose-600 transition-colors">
+                Show All Footwear
+            </button>
+        </div>
+    </main>
+
+    <!-- Store Spotlight / Showroom Banner -->
+    <section id="store-info" class="bg-slate-900 text-white py-14 sm:py-20">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+            <div class="bg-gradient-to-r from-slate-800 to-slate-900 border border-slate-700/80 rounded-3xl p-6 sm:p-10 lg:p-12 grid grid-cols-1 lg:grid-cols-12 gap-8 items-center">
+                <div class="lg:col-span-7 space-y-4">
+                    <span class="inline-block px-3 py-1 rounded-lg bg-rose-600/20 text-rose-400 text-xs font-bold uppercase tracking-wider">
+                        Flagship Showroom
+                    </span>
+                    <h2 class="font-display font-extrabold text-2xl sm:text-4xl">
+                        Visit Divyanshu Trends Shoes Company in Barra, Kanpur
+                    </h2>
+                    <p class="text-slate-300 text-sm sm:text-base leading-relaxed">
+                        Prefer trying before buying? Walk into our flagship retail showroom in Barra, Kanpur for personalized fitting assistance, wedding & festive footwear combos, and exclusive in-store discounts.
+                    </p>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-4 pt-3 text-sm">
+                        <div class="flex items-start gap-3 bg-white/5 p-3.5 rounded-2xl border border-white/10">
+                            <i data-lucide="map-pin" class="w-5 h-5 text-rose-500 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-white">Store Address</p>
+                                <p class="text-slate-400 text-xs mt-0.5">Main Market Road, Barra-2, Kanpur, Uttar Pradesh 208027</p>
+                            </div>
+                        </div>
+                        <div class="flex items-start gap-3 bg-white/5 p-3.5 rounded-2xl border border-white/10">
+                            <i data-lucide="clock" class="w-5 h-5 text-amber-400 shrink-0 mt-0.5"></i>
+                            <div>
+                                <p class="font-bold text-white">Opening Hours</p>
+                                <p class="text-slate-400 text-xs mt-0.5">Mon – Sun: 10:30 AM – 9:30 PM (Open All 7 Days)</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <div class="lg:col-span-5 flex flex-col sm:flex-row lg:flex-col gap-3">
+                    <a href="tel:+919839000000" class="w-full py-4 px-6 rounded-2xl bg-white text-slate-900 hover:bg-rose-600 hover:text-white font-bold text-center transition-all flex items-center justify-center gap-2 shadow-lg">
+                        <i data-lucide="phone-call" class="w-5 h-5"></i>
+                        <span>Call Store: +91 98390 45210</span>
+                    </a>
+                    <a href="#catalog" class="w-full py-4 px-6 rounded-2xl bg-slate-700/60 hover:bg-slate-700 text-white font-semibold text-center border border-slate-600 transition-all flex items-center justify-center gap-2">
+                        <i data-lucide="shopping-bag" class="w-5 h-5 text-amber-400"></i>
+                        <span>Order Online for Home Delivery</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Business Footer -->
+    <footer class="bg-brand-black text-slate-300 border-t border-slate-800">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-12 sm:py-16">
+            <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-10">
+                <!-- Company Brand Info -->
+                <div class="space-y-4">
+                    <div class="flex items-center gap-3">
+                        <div class="w-10 h-10 bg-rose-600 rounded-xl flex items-center justify-center text-white font-display font-extrabold text-lg">
+                            DT
+                        </div>
+                        <div>
+                            <h3 class="font-display font-extrabold text-lg text-white leading-none">DIVYANSHU TRENDS</h3>
+                            <p class="text-[11px] font-semibold tracking-widest text-rose-400 uppercase mt-1">Shoes Company</p>
+                        </div>
+                    </div>
+                    <p class="text-sm text-slate-400 leading-relaxed">
+                        Your trusted footwear destination in Kanpur offering premium men's sneakers, formal leather shoes, women's fashion footwear, and comfortable everyday flip-flops.
+                    </p>
+                    <!-- Social Links -->
+                    <div class="flex items-center gap-3 pt-2">
+                        <a href="#home" aria-label="Instagram" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-rose-600 text-white flex items-center justify-center transition-colors">
+                            <i data-lucide="instagram" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#home" aria-label="Facebook" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-rose-600 text-white flex items-center justify-center transition-colors">
+                            <i data-lucide="facebook" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#home" aria-label="Twitter" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-rose-600 text-white flex items-center justify-center transition-colors">
+                            <i data-lucide="twitter" class="w-5 h-5"></i>
+                        </a>
+                        <a href="#home" aria-label="YouTube" class="w-10 h-10 rounded-xl bg-slate-800 hover:bg-rose-600 text-white flex items-center justify-center transition-colors">
+                            <i data-lucide="youtube" class="w-5 h-5"></i>
+                        </a>
+                    </div>
+                </div>
+
+                <!-- Collections Links -->
+                <div>
+                    <h4 class="font-display font-bold text-white text-base mb-4">Shop Categories</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><button onclick="navigateCategory('Men')" class="hover:text-rose-400 transition-colors">Men's Sneakers & Sports</button></li>
+                        <li><button onclick="navigateCategory('Women')" class="hover:text-rose-400 transition-colors">Women's Casual & Heels</button></li>
+                        <li><button onclick="navigateCategory('Casual & Flip-Flops')" class="hover:text-rose-400 transition-colors">Casual Slides & Flip-Flops</button></li>
+                        <li><button onclick="navigateCategory('Formal')" class="hover:text-rose-400 transition-colors">Executive Leather Formals</button></li>
+                        <li><button onclick="navigateCategory('All')" class="hover:text-rose-400 transition-colors">New Arrivals 2026</button></li>
+                    </ul>
+                </div>
+
+                <!-- Customer Support -->
+                <div>
+                    <h4 class="font-display font-bold text-white text-base mb-4">Customer Service</h4>
+                    <ul class="space-y-2.5 text-sm">
+                        <li><a href="#catalog" class="hover:text-rose-400 transition-colors">UK Size Guide (UK 6 – UK 10)</a></li>
+                        <li><a href="#store-info" class="hover:text-rose-400 transition-colors">7-Day Size Exchange Policy</a></li>
+                        <li><a href="#store-info" class="hover:text-rose-400 transition-colors">Kanpur Same-Day Delivery</a></li>
+                        <li><a href="#store-info" class="hover:text-rose-400 transition-colors">Bulk & Corporate Orders</a></li>
+                    </ul>
+                </div>
+
+                <!-- Store Location & Contact -->
+                <div>
+                    <h4 class="font-display font-bold text-white text-base mb-4">Contact & Store</h4>
+                    <ul class="space-y-3 text-sm text-slate-400">
+                        <li class="flex items-start gap-2.5">
+                            <i data-lucide="map-pin" class="w-4 h-4 text-rose-500 shrink-0 mt-1"></i>
+                            <span>Shop No. 14, Main Market, Barra, Kanpur, Uttar Pradesh 208027, India</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i data-lucide="phone" class="w-4 h-4 text-rose-500 shrink-0"></i>
+                            <span>+91 98390 45210</span>
+                        </li>
+                        <li class="flex items-center gap-2.5">
+                            <i data-lucide="mail" class="w-4 h-4 text-rose-500 shrink-0"></i>
+                            <span>care@divyanshutrends.in</span>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+
+            <div class="border-t border-slate-800 mt-12 pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500">
+                <p>© 2026 Divyanshu Trends Shoes Company. All rights reserved.</p>
+                <p>Proudly serving Kanpur, Uttar Pradesh • Prices inclusive of all taxes (INR ₹)</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Slide-Out Shopping Cart Drawer -->
+    <div id="cartDrawerBackdrop" onclick="toggleCart(false)" class="fixed inset-0 bg-slate-900/60 backdrop-blur-xs z-50 hidden transition-opacity"></div>
+    <aside id="cartDrawer" class="fixed top-0 right-0 h-full w-full max-w-md bg-white z-50 shadow-2xl transform translate-x-full transition-transform duration-300 ease-in-out flex flex-col">
+        <!-- Cart Header -->
+        <div class="px-6 py-5 border-b border-slate-200 flex items-center justify-between bg-slate-50">
+            <div class="flex items-center gap-2.5">
+                <i data-lucide="shopping-bag" class="w-5 h-5 text-rose-600"></i>
+                <h3 class="font-display font-extrabold text-lg text-slate-900">Your Shopping Bag</h3>
+                <span id="drawerCartBadge" class="bg-slate-900 text-white text-xs font-bold px-2 py-0.5 rounded-full">0</span>
+            </div>
+            <button onclick="toggleCart(false)" class="p-2 rounded-xl text-slate-500 hover:text-slate-900 hover:bg-slate-200/70 transition-colors" aria-label="Close Cart">
+                <i data-lucide="x" class="w-5 h-5"></i>
+            </button>
+        </div>
+
+        <!-- Free Shipping Progress Bar -->
+        <div class="bg-rose-50 px-6 py-3 border-b border-rose-100">
+            <p id="shippingProgressText" class="text-xs font-semibold text-rose-800">Add ₹999 more for FREE Express Kanpur Delivery!</p>
+            <div class="w-full bg-rose-200/70 h-1.5 rounded-full mt-1.5 overflow-hidden">
+                <div id="shippingProgressBar" class="bg-rose-600 h-full rounded-full transition-all duration-300" style="width: 0%"></div>
+            </div>
+        </div>
+
+        <!-- Cart Items List -->
+        <div id="cartItemsContainer" class="flex-1 overflow-y-auto p-6 space-y-4">
+            <!-- Dynamically populated -->
+        </div>
+
+        <!-- Empty Cart Placeholder -->
+        <div id="emptyCartMessage" class="flex-1 flex flex-col items-center justify-center p-8 text-center">
+            <div class="w-20 h-20 rounded-full bg-slate-100 flex items-center justify-center text-slate-400 mb-4">
+                <i data-lucide="shopping-bag" class="w-10 h-10"></i>
+            </div>
+            <h4 class="font-display font-bold text-lg text-slate-900">Your shoe bag is empty</h4>
+            <p class="text-sm text-slate-500 mt-1 max-w-xs">Looks like you haven't picked your pair yet. Explore our latest collection!</p>
+            <button onclick="toggleCart(false)" class="mt-6 px-6 py-3 bg-slate-900 hover:bg-rose-600 text-white font-bold text-sm rounded-xl transition-colors">
+                Browse Footwear
+            </button>
+        </div>
+
+        <!-- Cart Footer Summary & Checkout Trigger -->
+        <div id="cartFooter" class="hidden border-t border-slate-200 p-6 bg-slate-50 space-y-4">
+            <div class="space-y-2 text-sm">
+                <div class="flex justify-between text-slate-600">
+                    <span>Subtotal</span>
+                    <span id="cartSubtotal" class="font-semibold text-slate-900">₹0</span>
+                </div>
+                <div class="flex justify-between text-slate-600">
+                    <span>Delivery Fee</span>
+                    <span id="cartShipping" class="font-semibold text-emerald-600">FREE</span>
+                </div>
+                <div class="flex justify-between text-base font-extrabold text-slate-900 pt-2 border-t border-slate-200">
+                    <span>Total Amount</span>
+                    <span id="cartTotal" class="font-display text-lg text-rose-600">₹0</span>
+                </div>
+            </div>
+            <button onclick="openCheckoutModal()" class="w-full py-4 rounded-xl bg-rose-600 hover:bg-rose-700 text-white font-bold text-base shadow-lg shadow-rose-600/25 transition-all flex items-center justify-center gap-2 active:scale-[0.99]">
+                <span>Proceed to Checkout</span>
+                <i data-lucide="arrow-right" class="w-5 h-5"></i>
+            </button>
+        </div>
+    </aside>
+
+    <!-- Checkout & Order Confirmation Modal -->
+    <div id="checkoutModal" class="fixed inset-0 z-50 hidden items-center justify-center p-4 bg-slate-900/70 backdrop-blur-xs overflow-y-auto">
+        <div class="bg-white rounded-3xl max-w-lg w-full shadow-2xl overflow-hidden my-8 border border-slate-200">
+            <!-- Modal Header -->
+            <div class="px-6 py-4 bg-slate-900 text-white flex items-center justify-between">
+                <div class="flex items-center gap-2">
+                    <span class="w-7 h-7 rounded-lg bg-rose-600 flex items-center justify-center font-display font-extrabold text-xs">DT</span>
+                    <h3 class="font-display font-bold text-base sm:text-lg">Express Checkout</h3>
+                </div>
+                <button onclick="closeCheckoutModal()" class="p-1.5 rounded-lg text-slate-400 hover:text-white hover:bg-white/10">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+
+            <!-- Checkout Form View -->
+            <form id="checkoutForm" onsubmit="submitOrder(event)" class="p-6 space-y-4">
+                <div class="bg-slate-50 p-3.5 rounded-2xl border border-slate-200 flex items-center justify-between">
+                    <div>
+                        <p class="text-xs text-slate-500 font-medium">Payable Order Total</p>
+                        <p id="modalOrderTotal" class="font-display font-extrabold text-xl text-slate-900">₹0</p>
+                    </div>
+                    <span id="modalItemCount" class="text-xs font-bold bg-slate-200 text-slate-800 px-3 py-1 rounded-full">0 Items</span>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Full Name *</label>
+                    <input type="text" id="custName" required placeholder="e.g. Aarav Verma" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-slate-900">
+                </div>
+
+                <div class="grid grid-cols-1 sm:grid-cols-2 gap-4">
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Mobile Number *</label>
+                        <input type="tel" id="custPhone" required pattern="[0-9]{10}" placeholder="10-digit mobile number" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-slate-900">
+                    </div>
+                    <div>
+                        <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Delivery Area / City *</label>
+                        <input type="text" id="custCity" required value="Barra, Kanpur, UP" class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-slate-900">
+                    </div>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1">Complete Delivery Address *</label>
+                    <textarea id="custAddress" required rows="2" placeholder="House/Flat No., Street, Landmark..." class="w-full px-4 py-2.5 rounded-xl border border-slate-300 text-sm focus:outline-none focus:border-slate-900"></textarea>
+                </div>
+
+                <div>
+                    <label class="block text-xs font-bold text-slate-700 uppercase tracking-wider mb-1.5">Payment Method</label>
+                    <div class="grid grid-cols-2 gap-3">
+                        <label class="cursor-pointer">
+                            <input type="radio" name="paymentMethod" value="Cash on Delivery (COD)" checked class="peer sr-only">
+                            <div class="p-3 rounded-xl border border-slate-200 peer-checked:border-rose-600 peer-checked:bg-rose-50/60 text-center transition-all">
+                                <p class="font-bold text-xs text-slate-900">Cash on Delivery</p>
+                                <p class="text-[11px] text-slate-500 mt-0.5">Pay at doorstep</p>
+                            </div>
+                        </label>
+                        <label class="cursor-pointer">
+                            <input type="radio" name="paymentMethod" value="UPI / QR on Delivery" class="peer sr-only">
+                            <div class="p-3 rounded-xl border border-slate-200 peer-checked:border-rose-600 peer-checked:bg-rose-50/60 text-center transition-all">
+                                <p class="font-bold text-xs text-slate-900">UPI / QR Pay</p>
+                                <p class="text-[11px] text-slate-500 mt-0.5">GPay / PhonePe / Paytm</p>
+                            </div>
+                        </label>
+                    </div>
+                </div>
+
+                <button type="submit" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-rose-600 text-white font-bold text-sm sm:text-base transition-colors shadow-lg mt-2">
+                    Confirm & Place Order
+                </button>
+            </form>
+
+            <!-- Order Confirmation Success View (Hidden initially) -->
+            <div id="orderSuccessView" class="hidden p-8 text-center space-y-4">
+                <div class="w-16 h-16 rounded-full bg-emerald-100 text-emerald-600 flex items-center justify-center mx-auto">
+                    <i data-lucide="check-circle-2" class="w-10 h-10"></i>
+                </div>
+                <div>
+                    <span class="text-xs font-bold uppercase tracking-wider text-emerald-600">Order Confirmed!</span>
+                    <h4 class="font-display font-extrabold text-2xl text-slate-900 mt-1">Thank You for Shopping With Us!</h4>
+                    <p id="orderConfirmationDetails" class="text-sm text-slate-600 mt-2 leading-relaxed">
+                        Your order has been received by <strong>Divyanshu Trends Shoes Company</strong> (Barra, Kanpur).
+                    </p>
+                </div>
+                <div class="bg-slate-50 rounded-2xl p-4 border border-slate-200 text-left text-xs space-y-1.5">
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Order ID:</span>
+                        <span id="generatedOrderId" class="font-bold text-slate-900">#DT-2026-884</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Dispatch Hub:</span>
+                        <span class="font-semibold text-slate-800">Barra Showroom, Kanpur</span>
+                    </div>
+                    <div class="flex justify-between">
+                        <span class="text-slate-500">Estimated Delivery:</span>
+                        <span class="font-semibold text-emerald-600">Within 24 Hours</span>
+                    </div>
+                </div>
+                <button onclick="closeCheckoutModal()" class="w-full py-3.5 rounded-xl bg-slate-900 hover:bg-rose-600 text-white font-bold text-sm transition-colors">
+                    Continue Shopping
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Toast Notification Banner -->
+    <div id="toastNotification" class="fixed bottom-5 right-5 z-50 transform translate-y-24 opacity-0 transition-all duration-300 pointer-events-none">
+        <div class="bg-slate-900 text-white px-4 py-3 rounded-2xl shadow-xl border border-slate-700 flex items-center gap-3">
+            <div class="w-8 h-8 rounded-xl bg-rose-600 flex items-center justify-center shrink-0">
+                <i data-lucide="check" class="w-4 h-4 text-white"></i>
+            </div>
+            <div>
+                <p id="toastTitle" class="text-xs font-bold text-white">Added to Bag</p>
+                <p id="toastSubtitle" class="text-[11px] text-slate-300">Item added to your shopping cart</p>
+            </div>
+        </div>
+    </div>
+
+    <!-- Storefront Application Logic -->
+    <script>
+        // Product Catalog Database (Prices in Indian Rupees ₹)
+        const products = [
+            {
+                id: 1,
+                name: "DT AeroPulse Crimson Runner",
+                category: "Men",
+                price: 2499,
+                originalPrice: 3299,
+                badge: "Bestseller",
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1542291026-7eec264c27ff?auto=format&fit=crop&w=700&q=80",
+                fallback: "https://placehold.co/600x500/1e293b/ffffff?text=AeroPulse+Runner"
+            },
+            {
+                id: 2,
+                name: "Kanpur Heritage Oxford Tan",
+                category: "Formal",
+                price: 2899,
+                originalPrice: 3799,
+                badge: "Genuine Leather",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1614252369475-531eba835eb1?auto=format&fit=crop&w=700&q=80",
+                fallback: "https://placehold.co/600x500/78350f/ffffff?text=Heritage+Oxford+Tan"
+            },
+            {
+                id: 3,
+                name: "Aura Blush Knit Sneaker",
+                category: "Women",
+                price: 1899,
+                originalPrice: 2499,
+                badge: "Trending",
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1595950653106-6c9ebd614d3a?auto=format&fit=crop&w=700&q=80",
+                fallback: "https://placehold.co/600x500/be185d/ffffff?text=Aura+Blush+Sneaker"
+            },
+            {
+                id: 4,
+                name: "CloudFoam Comfort Flip-Flops",
+                category: "Casual & Flip-Flops",
+                price: 699,
+                originalPrice: 999,
+                badge: "Ultra Light",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1603487742131-4160ec999306?auto=format&fit=crop&w=700&q=80",
+                fallback: "https://placehold.co/600x500/0f172a/ffffff?text=CloudFoam+Flip-Flops"
+            },
+            {
+                id: 5,
+                name: "Urban Street High-Top White",
+                category: "Men",
+                price: 2199,
+                originalPrice: 2899,
+                badge: "New Drop",
+                rating: 4.8,
+                image: "https://images.unsplash.com/photo-1549298916-b41d501d3772?auto=format&fit=crop&w=700&q=80",
+                fallback: "https://placehold.co/600x500/334155/ffffff?text=Urban+High-Top"
+            },
+            {
+                id: 6,
+                name: "Velvet Stride Block Heels",
+                category: "Women",
+                price: 1699,
+                originalPrice: 2299,
+                badge: "Festive Pick",
+                rating: 4.7,
+                image: "https://images.unsplash.com/photo-1543163521-1bf539c55dd2?auto=format&fit=crop&w=700&q=80",
+                fallback: "https://placehold.co/600x500/881337/ffffff?text=Velvet+Block+Heels"
+            },
+            {
+                id: 7,
+                name: "Executive Noir Derby Formal",
+                category: "Formal",
+                price: 2599,
+                originalPrice: 3499,
+                badge: "Office Essential",
+                rating: 4.9,
+                image: "https://images.unsplash.com/photo-1533867617858-e7b97e060509?auto=format&fit=crop&w=700&q=80",
+                fallback: "https://placehold.co/600x500/111827/ffffff?text=Executive+Derby"
+            },
+            {
+                id: 8,
+                name: "BreezeWalk Everyday Sliders",
+                category: "Casual & Flip-Flops",
+                price: 799,
+                originalPrice: 1199,
+                badge: "Value Deal",
+                rating: 4.6,
+                image: "https://images.unsplash.com/photo-1562183241-b937e95585b6?auto=format&fit=crop&w=700&q=80",
+                fallback: "https://placehold.co/600x500/1e293b/ffffff?text=BreezeWalk+Sliders"
+            }
+        ];
+
+        const availableSizes = ["UK 6", "UK 7", "UK 8", "UK 9", "UK 10"];
+
+        // State Management
+        let selectedSizes = {}; // { productId: "UK 8" }
+        let cart = []; // [{ id, name, price, size, qty, image, fallback }]
+        let activeCategory = "All";
+        let searchQuery = "";
+        let sortBy = "featured";
+
+        // Initialize default size UK 8 for all products
+        products.forEach(p => {
+            selectedSizes[p.id] = "UK 8";
+        });
+
+        // Format number as Indian Rupees
+        function formatINR(amount) {
+            return "₹" + amount.toLocaleString("en-IN");
+        }
+
+        // Render Product Catalog Grid
+        function renderProducts() {
+            const grid = document.getElementById("productGrid");
+            const emptyState = document.getElementById("emptyCatalogState");
+            const countLabel = document.getElementById("productCount");
+            const resetBtn = document.getElementById("resetSearchBtn");
+
+            // Filter by category and search
+            let filtered = products.filter(product => {
+                const matchesCat = activeCategory === "All" || product.category === activeCategory;
+                const q = searchQuery.trim().toLowerCase();
+                const matchesSearch = !q ||
+                    product.name.toLowerCase().includes(q) ||
+                    product.category.toLowerCase().includes(q) ||
+                    product.badge.toLowerCase().includes(q);
+                return matchesCat && matchesSearch;
+            });
+
+            // Apply sorting
+            if (sortBy === "price-low") {
+                filtered.sort((a, b) => a.price - b.price);
+            } else if (sortBy === "price-high") {
+                filtered.sort((a, b) => b.price - a.price);
+            }
+
+            countLabel.textContent = filtered.length;
+            if (activeCategory !== "All" || searchQuery.trim() !== "") {
+                resetBtn.classList.remove("hidden");
+            } else {
+                resetBtn.classList.add("hidden");
+            }
+
+            if (filtered.length === 0) {
+                grid.innerHTML = "";
+                emptyState.classList.remove("hidden");
+                lucide.createIcons();
+                return;
+            }
+
+            emptyState.classList.add("hidden");
+
+            grid.innerHTML = filtered.map(product => {
+                const currentSize = selectedSizes[product.id] || "UK 8";
+                const discountPercent = Math.round(((product.originalPrice - product.price) / product.originalPrice) * 100);
+
+                return `
+                <article class="bg-white rounded-3xl border border-slate-200/90 overflow-hidden shadow-xs hover:shadow-xl transition-all duration-300 flex flex-col justify-between group">
+                    <div>
+                        <!-- Product Image Wrapper -->
+                        <div class="relative aspect-[4/3] bg-slate-100 overflow-hidden">
+                            <img 
+                                src="${product.image}" 
+                                onerror="this.src='${product.fallback}'"
+                                alt="${product.name}" 
+                                class="w-full h-full object-cover group-hover:scale-105 transition-transform duration-500"
+                            >
+                            <span class="absolute top-3 left-3 bg-slate-900/90 backdrop-blur-xs text-white text-[11px] font-bold px-2.5 py-1 rounded-lg uppercase tracking-wider">
+                                ${product.badge}
+                            </span>
+                            <span class="absolute top-3 right-3 bg-rose-600 text-white text-[11px] font-extrabold px-2 py-1 rounded-lg">
+                                -${discountPercent}%
+                            </span>
+                        </div>
+
+                        <!-- Product Details -->
+                        <div class="p-5 pb-3">
+                            <div class="flex items-center justify-between text-xs text-slate-500 mb-1">
+                                <span class="font-semibold text-rose-600 uppercase tracking-wider">${product.category}</span>
+                                <span class="flex items-center gap-1 font-bold text-amber-500">
+                                    ★ ${product.rating}
+                                </span>
+                            </div>
+                            <h3 class="font-display font-bold text-base sm:text-lg text-slate-900 leading-snug line-clamp-1">
+                                ${product.name}
+                            </h3>
+                            <div class="flex items-baseline gap-2 mt-2">
+                                <span class="font-display font-extrabold text-xl text-slate-900">${formatINR(product.price)}</span>
+                                <span class="text-xs text-slate-400 line-through">${formatINR(product.originalPrice)}</span>
+                            </div>
+
+                            <!-- Size Selector (UK 6 to UK 10) -->
+                            <div class="mt-4">
+                                <div class="flex items-center justify-between mb-1.5">
+                                    <span class="text-[11px] font-bold text-slate-500 uppercase tracking-wider">Select Size</span>
+                                    <span class="text-[11px] font-semibold text-slate-800">${currentSize}</span>
+                                </div>
+                                <div class="grid grid-cols-5 gap-1.5">
+                                    ${availableSizes.map(size => {
+                                        const isSelected = currentSize === size;
+                                        return `
+                                        <button 
+                                            type="button"
+                                            onclick="selectSize(${product.id}, '${size}')"
+                                            class="py-1.5 rounded-lg text-xs font-bold border transition-all ${
+                                                isSelected 
+                                                ? 'bg-slate-900 text-white border-slate-900 shadow-xs' 
+                                                : 'bg-slate-50 text-slate-700 border-slate-200 hover:border-slate-400'
+                                            }"
+                                        >
+                                            ${size.replace('UK ', '')}
+                                        </button>`;
+                                    }).join('')}
+                                </div>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Add to Cart Button -->
+                    <div class="p-5 pt-2">
+                        <button 
+                            type="button"
+                            onclick="addToCart(${product.id})"
+                            class="w-full py-3 px-4 rounded-xl bg-slate-900 hover:bg-rose-600 text-white font-bold text-sm transition-colors flex items-center justify-center gap-2 active:scale-[0.98] shadow-xs"
+                        >
+                            <i data-lucide="shopping-bag" class="w-4 h-4"></i>
+                            <span>Add to Cart</span>
+                        </button>
+                    </div>
+                </article>
+                `;
+            }).join('');
+
+            lucide.createIcons();
+        }
+
+        // Select UK Size for a Product Card
+        function selectSize(productId, size) {
+            selectedSizes[productId] = size;
+            renderProducts();
+        }
+
+        // Filter by Category
+        function filterCategory(category) {
+            activeCategory = category;
+
+            // Update Category Pill Styling
+            document.querySelectorAll('.cat-btn').forEach(btn => {
+                if (btn.dataset.cat === category) {
+                    btn.className = "cat-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-slate-900 text-white shadow-sm whitespace-nowrap transition-all";
+                } else {
+                    btn.className = "cat-btn px-5 py-2.5 rounded-xl text-sm font-bold bg-white text-slate-700 border border-slate-200 hover:border-slate-900 whitespace-nowrap transition-all";
+                }
+            });
+
+            // Update Desktop Nav Active State
+            document.querySelectorAll('.nav-link').forEach(link => {
+                if (link.dataset.nav === category) {
+                    link.classList.add('text-rose-600', 'bg-rose-50');
+                    link.classList.remove('text-slate-600');
+                } else {
+                    link.classList.remove('text-rose-600', 'bg-rose-50');
+                    link.classList.add('text-slate-600');
+                }
+            });
+
+            renderProducts();
+        }
+
+        // Navigate from Header/Footer to Catalog with Category Selected
+        function navigateCategory(category) {
+            filterCategory(category);
+            const catalogEl = document.getElementById('catalog');
+            if (catalogEl) {
+                catalogEl.scrollIntoView({ behavior: 'smooth' });
+            }
+        }
+
+        // Handle Search Input
+        function handleSearch(val) {
+            searchQuery = val;
+            const desktopInput = document.getElementById('searchInput');
+            const mobileInput = document.getElementById('mobileSearchInput');
+            if (desktopInput && desktopInput.value !== val) desktopInput.value = val;
+            if (mobileInput && mobileInput.value !== val) mobileInput.value = val;
+            renderProducts();
+        }
+
+        // Handle Sort Dropdown
+        function handleSort(val) {
+            sortBy = val;
+            renderProducts();
+        }
+
+        // Reset All Filters
+        function resetFilters() {
+            searchQuery = "";
+            sortBy = "featured";
+            document.getElementById('searchInput').value = "";
+            document.getElementById('mobileSearchInput').value = "";
+            document.getElementById('sortSelect').value = "featured";
+            filterCategory("All");
+        }
+
+        // Add Item to Cart
+        function addToCart(productId) {
+            const product = products.find(p => p.id === productId);
+            if (!product) return;
+
+            const chosenSize = selectedSizes[productId] || "UK 8";
+            const existingIndex = cart.findIndex(item => item.id === productId && item.size === chosenSize);
+
+            if (existingIndex > -1) {
+                cart[existingIndex].qty += 1;
+            } else {
+                cart.push({
+                    id: product.id,
+                    name: product.name,
+                    price: product.price,
+                    size: chosenSize,
+                    qty: 1,
+                    image: product.image,
+                    fallback: product.fallback
+                });
+            }
+
+            updateCartUI();
+            showToast(`${product.name} (${chosenSize})`, "Added to your shopping bag");
+        }
+
+        // Update Cart Quantity (+1 / -1)
+        function updateCartQty(index, delta) {
+            if (!cart[index]) return;
+            cart[index].qty += delta;
+            if (cart[index].qty <= 0) {
+                cart.splice(index, 1);
+            }
+            updateCartUI();
+        }
+
+        // Remove Item from Cart
+        function removeCartItem(index) {
+            cart.splice(index, 1);
+            updateCartUI();
+        }
+
+        // Render Cart Drawer & Totals
+        function updateCartUI() {
+            const headerCount = document.getElementById('headerCartCount');
+            const drawerBadge = document.getElementById('drawerCartBadge');
+            const itemsContainer = document.getElementById('cartItemsContainer');
+            const emptyMsg = document.getElementById('emptyCartMessage');
+            const cartFooter = document.getElementById('cartFooter');
+            const subtotalEl = document.getElementById('cartSubtotal');
+            const shippingEl = document.getElementById('cartShipping');
+            const totalEl = document.getElementById('cartTotal');
+            const progressText = document.getElementById('shippingProgressText');
+            const progressBar = document.getElementById('shippingProgressBar');
+
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const freeShippingThreshold = 999;
+            const shippingFee = subtotal === 0 || subtotal >= freeShippingThreshold ? 0 : 79;
+            const grandTotal = subtotal + shippingFee;
+
+            headerCount.textContent = totalItems;
+            drawerBadge.textContent = totalItems;
+
+            // Update Free Shipping Progress
+            if (subtotal >= freeShippingThreshold) {
+                progressText.textContent = "🎉 You've unlocked FREE Express Kanpur Delivery!";
+                progressBar.style.width = "100%";
+            } else {
+                const remaining = freeShippingThreshold - subtotal;
+                const pct = Math.min(100, Math.round((subtotal / freeShippingThreshold) * 100));
+                progressText.textContent = `Add ${formatINR(remaining)} more for FREE Express Kanpur Delivery!`;
+                progressBar.style.width = `${pct}%`;
+            }
+
+            if (cart.length === 0) {
+                itemsContainer.classList.add('hidden');
+                cartFooter.classList.add('hidden');
+                emptyMsg.classList.remove('hidden');
+                return;
+            }
+
+            emptyMsg.classList.add('hidden');
+            itemsContainer.classList.remove('hidden');
+            cartFooter.classList.remove('hidden');
+
+            itemsContainer.innerHTML = cart.map((item, idx) => `
+                <div class="flex gap-3.5 bg-slate-50 p-3.5 rounded-2xl border border-slate-200/80">
+                    <img 
+                        src="${item.image}" 
+                        onerror="this.src='${item.fallback}'"
+                        alt="${item.name}" 
+                        class="w-20 h-20 rounded-xl object-cover bg-white shrink-0 border border-slate-200"
+                    >
+                    <div class="flex-1 min-w-0">
+                        <div class="flex items-start justify-between gap-2">
+                            <h4 class="font-bold text-sm text-slate-900 truncate">${item.name}</h4>
+                            <button onclick="removeCartItem(${idx})" class="text-slate-400 hover:text-rose-600 p-1" aria-label="Remove item">
+                                <i data-lucide="trash-2" class="w-4 h-4"></i>
+                            </button>
+                        </div>
+                        <p class="text-xs font-semibold text-slate-500 mt-0.5">Size: <span class="text-slate-800">${item.size}</span></p>
+                        <div class="flex items-center justify-between mt-3">
+                            <span class="font-display font-extrabold text-sm text-slate-900">${formatINR(item.price * item.qty)}</span>
+                            <div class="flex items-center bg-white border border-slate-200 rounded-lg overflow-hidden">
+                                <button onclick="updateCartQty(${idx}, -1)" class="px-2.5 py-1 text-slate-700 hover:bg-slate-100 font-bold text-sm">−</button>
+                                <span class="px-2.5 py-1 text-xs font-extrabold text-slate-900">${item.qty}</span>
+                                <button onclick="updateCartQty(${idx}, 1)" class="px-2.5 py-1 text-slate-700 hover:bg-slate-100 font-bold text-sm">+</button>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            `).join('');
+
+            subtotalEl.textContent = formatINR(subtotal);
+            shippingEl.textContent = shippingFee === 0 ? "FREE" : formatINR(shippingFee);
+            shippingEl.className = shippingFee === 0 ? "font-semibold text-emerald-600" : "font-semibold text-slate-900";
+            totalEl.textContent = formatINR(grandTotal);
+
+            lucide.createIcons();
+        }
+
+        // Slide-Out Cart Drawer Controls
+        function toggleCart(open) {
+            const drawer = document.getElementById('cartDrawer');
+            const backdrop = document.getElementById('cartDrawerBackdrop');
+
+            if (open) {
+                backdrop.classList.remove('hidden');
+                setTimeout(() => {
+                    drawer.classList.remove('translate-x-full');
+                }, 10);
+            } else {
+                drawer.classList.add('translate-x-full');
+                setTimeout(() => {
+                    backdrop.classList.add('hidden');
+                }, 300);
+            }
+        }
+
+        // Mobile Navigation Menu Toggle
+        function toggleMobileMenu() {
+            const menu = document.getElementById('mobileMenu');
+            menu.classList.toggle('hidden');
+        }
+
+        // Checkout Modal Controls
+        function openCheckoutModal() {
+            if (cart.length === 0) return;
+
+            const totalItems = cart.reduce((sum, item) => sum + item.qty, 0);
+            const subtotal = cart.reduce((sum, item) => sum + (item.price * item.qty), 0);
+            const shippingFee = subtotal >= 999 ? 0 : 79;
+            const grandTotal = subtotal + shippingFee;
+
+            document.getElementById('modalOrderTotal').textContent = formatINR(grandTotal);
+            document.getElementById('modalItemCount').textContent = `${totalItems} ${totalItems === 1 ? 'Pair' : 'Pairs'}`;
+
+            // Reset modal state to form
+            document.getElementById('checkoutForm').classList.remove('hidden');
+            document.getElementById('orderSuccessView').classList.add('hidden');
+
+            toggleCart(false);
+            const modal = document.getElementById('checkoutModal');
+            modal.classList.remove('hidden');
+            modal.classList.add('flex');
+        }
+
+        function closeCheckoutModal() {
+            const modal = document.getElementById('checkoutModal');
+            modal.classList.add('hidden');
+            modal.classList.remove('flex');
+        }
+
+        // Submit Order & Show Confirmation
+        function submitOrder(event) {
+            event.preventDefault();
+
+            const name = document.getElementById('custName').value.trim();
+            const city = document.getElementById('custCity').value.trim();
+            const payment = document.querySelector('input[name="paymentMethod"]:checked').value;
+            const randomOrderNum = Math.floor(1000 + Math.random() * 9000);
+
+            document.getElementById('generatedOrderId').textContent = `#DT-2026-${randomOrderNum}`;
+            document.getElementById('orderConfirmationDetails').innerHTML = `
+                Thank you, <strong>${name}</strong>! Your order for <strong>${city}</strong> via <strong>${payment}</strong> has been confirmed by <strong>Divyanshu Trends Shoes Company</strong>.
+            `;
+
+            // Clear Cart
+            cart = [];
+            updateCartUI();
+
+            // Switch to Confirmation View
+            document.getElementById('checkoutForm').classList.add('hidden');
+            document.getElementById('orderSuccessView').classList.remove('hidden');
+            lucide.createIcons();
+        }
+
+        // Toast Feedback Notification
+        let toastTimeout;
+        function showToast(title, subtitle) {
+            const toast = document.getElementById('toastNotification');
+            document.getElementById('toastTitle').textContent = title;
+            document.getElementById('toastSubtitle').textContent = subtitle;
+
+            toast.classList.remove('translate-y-24', 'opacity-0');
+            clearTimeout(toastTimeout);
+            toastTimeout = setTimeout(() => {
+                toast.classList.add('translate-y-24', 'opacity-0');
+            }, 2600);
+        }
+
+        // Initial Render on Load
+        window.addEventListener('DOMContentLoaded', () => {
+            renderProducts();
+            updateCartUI();
+            lucide.createIcons();
+        });
+    </script>
+</body>
+</html>
